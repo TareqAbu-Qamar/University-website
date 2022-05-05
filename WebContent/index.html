@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1256">
+<title>Software Engineering Department</title>
+<style>
+h1{
+ color:blue;
+}
+a{
+ text-decoration: none;
+ color: blue;
+}
+a:hover{
+ text-decoration:underline;
+ color: yellow;
+}
+data{
+ background-color:whitesmoke;
+ float: right;
+ width: 100%;
+ 
+ }
+ table {
+  width:50%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th{
+  color: red;
+  padding: 15px;
+  text-align: left;
+}
+td {
+  padding: 15px;
+  text-align: left;
+  color: blue;
+}
+</style>
+<script type="text/javascript">
+function Valid(){
+var regex = /^[A-Za-z]+$/;
+   if(document.getElementById("name").value.match(regex))
+   {
+	   if( document.getElementById("addr").value.match(regex))
+	   {
+		   if(document.getElementById("st").value.match(regex))
+		   { return true; }
+		   else{
+			   document.getElementById("st").value = "";
+			   alert("Invalid street name !")
+ 			   return false;
+			   }
+	   if(document.getElementById("city").value.match(regex))
+	   { return true; }
+	   else{
+ 		 document.getElementById("city").value = "";
+ 		 alert("Invalid city name !")
+ 		 return false;
+ 		 }
+	   }
+	   else{
+		 document.getElementById("addr").value = "";
+		 alert("Invalid address !")
+	    return false;
+	    }
+}else
+     {
+ 	 document.getElementById("name").value = "";
+ 	 alert("Invalid name !");
+     return false;
+     }
+   
+   var alphanumeric = /^[ A-Za-z0-9_@.#&+-]*$/;
+   
+   if(document.getElementById("code").value.match(alphanumeric)){
+	   return true;
+   }else{
+	   return false;
+   }
+   
+   var checkedBoxes = document.getElementById("liked");
+   if (checkedBoxes.checked){
+	   alert("checked");}
+   else{
+	   alert("You didn't check it!");}
+   
+   if(document.getElementById("male").checked) {
+	   return true;
+   }else if(document.getElementById("female").checked) {
+	   return true;
+   }else if(document.getElementById("internet").checked) {
+	   return true;
+   }else if(document.getElementById("other").checked) {
+	   return true;
+   }
+   
+   var regexEmail = /\S+@\S+\.\S+/;
+   if(document.getElementById("email").value.match(regexEmail))
+   { return true; }
+   
+   var regexMovie = /[1-9]{1,2}+(,[1-100]{1,2})*/;
+   if(document.getElementById("movie").value.match(regexMovie)){
+	   return true;
+   }
+   else {
+	   return false;
+   }
+
+	 
+}
+
+</script>
+</head>
+<body>
+  <div id="data">
+    <h1>Campus Visit Form</h1>
+    <form action="Servlet" method="Post">
+        <label for="name"><b>Name:</b></label>&nbsp;&nbsp;&nbsp;
+        <input type="text" id="name" name="name"><br><br>
+       
+        <label for="name"><b>Degree:</b></label>&nbsp;
+        <input type="radio" name="degree" value="Bachelor">Bachelor
+        <input type="radio" name="degree" value="Master">M.A
+        <input type="radio" name="degree" value="PhD">PhD<br><br>
+
+
+        <label for="address"><b>Address:</b></label>
+        <input type="text" id="addr" name="address"><br><br>
+
+        <label for="street"><b>Street:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="st" name="street"><br><br>
+
+        <label for="city"><b>City:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="city" name="city"><br><br>
+
+        <label for="zipcode"><b>Zip-Code:</b></label>
+        <input type="text" id="code" name="zipcode"><br><br>
+
+        <label for="email"><b>Email:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="movie"><b>Movie Raffle:</b></label>
+        <input type="text" id="movie" name="movie"><br><br>
+
+        <table>
+          <tr>
+              <th><b>What you liked most about the campus ?</b></th>
+              <th><b>How students become interested in the university ?</b></th>
+              <th><b>What's your degree ?</b></th>
+          </tr>
+          <tr>
+          <td><input type="checkbox" name="liked" id="liked"><label for="student">I'm student</label></td>
+          <td><input type="radio" name="interested" id="male" value="male">Male</td>
+          <td>
+            <li>Bachelor
+              <ol>
+                  <li>Java</li>
+                  <li>UML</li>
+                  <li>Fundamental of Software Engineering</li>
+                  <li>Algorithms & Data Structures</li>
+              </ol>
+          </li></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="liked" id="liked"><label for="location">location</label></td>
+            <td><input type="radio" name="interested" id="female" value="female">Female</td>
+            <td>
+              <li><abbr title="Master">M.A</abbr> 
+                <ol>
+                  <li><abbr title="Artificial intelligence">AI</abbr></li>
+                  <li>Advanced Algorithms & Data Structures</li>
+                  <li>Cloud Computing</li>
+                </ol>
+            </li></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="liked" ><label for="campus">campus</label></td>
+            <td><input type="radio" name="interested" id="internet" value="internet">Internet</td>
+            <td>
+              <li>PhD
+                <ol>
+                  <li>Advanced Topics in Software Engineering</li>
+                  <li>Special Topics in Design Computing</li>
+                  <li>Creativity for Innovation and Design Thinking</li>
+                </ol>
+            </li></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="liked" ><label for="atomsphere">atomsphere</label></td>
+            <td><input type="radio" name="interested" id="other" value="other">Other<br></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="liked" ><label for="rooms">dorm rooms</label></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="liked" ><label for="sport">sports</label></td>
+          </tr>
+        </table><br>
+        <textarea name="comment" rows="10" cols="25">Write your comments here.</textarea><br>
+       
+       <label for="mean"></label>
+       <label for="standardDeviation"></label>
+       
+        <input type="submit" value="Submit" onclick="Valid" style="background-color: blue;color: white; font-size: 15px;">
+        <input type="reset" value="Reset" onclick="Reset()" style="background-color: blue;color: white; font-size: 15px;">
+      
+      </form>
+   </div>
+
+</body>
+</html>
